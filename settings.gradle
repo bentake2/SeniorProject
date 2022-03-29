@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "Senior_Project_Image_Sementation"
+include ':app'
