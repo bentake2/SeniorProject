@@ -17,7 +17,7 @@ import numpy as np
 # Define transformations for the training and test sets
 transformations = transforms.Compose([
     transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)) #
 ])
 
 # CIFAR10 dataset consists of 50K training images. We define the batch size of 10 to load 5,000 batches of images.
