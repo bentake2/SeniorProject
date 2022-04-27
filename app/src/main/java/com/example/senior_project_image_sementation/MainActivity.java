@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.pytorch.IValue;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonLoadImage = (Button) findViewById(R.id.button);
         Button segmentButton = (Button) findViewById(R.id.segment);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -83,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
-
+                progressBar.setVisibility(ProgressBar.VISIBLE);
 
             }
         });
-
+        //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         segmentButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -96,8 +98,11 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bitmap = null;
                 Module module = null;
 
+
+
                 //Getting the image from the image view
                 ImageView imageView = (ImageView) findViewById(R.id.image);
+
 
                 try {
                     //Read the image as Bitmap
@@ -199,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 outputBitmap.setPixels(intValues, 0, outputBitmap.getWidth(), 0, 0,
                         outputBitmap.getWidth(), outputBitmap.getHeight());
                 imageView.setImageBitmap(outputBitmap);
-
+                progressBar.setVisibility(ProgressBar.INVISIBLE);
             }
         });
 
